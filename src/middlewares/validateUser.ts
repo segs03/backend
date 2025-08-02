@@ -22,3 +22,22 @@ export const validateUser = (req: Request, res: Response, next: NextFunction) =>
     return;
 };
 
+
+export const validateUpdateUser = (req: Request, res: Response, next: NextFunction) => {
+    const schema = Joi.object({
+        // firstname: Joi.string().max(100),
+        // lastname: Joi.string().max(100),
+        email: Joi.string().email().required(),
+        phone: Joi.string().max(20),
+    });
+
+    const { error } = schema.validate(req.body);
+
+    if (error) {
+        res.status(400).json({ error: error.details[0].message });
+        return;
+    }
+
+    next();
+    return;
+};

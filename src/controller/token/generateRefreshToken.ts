@@ -33,13 +33,14 @@ export const generateRefreshToken = async (req: Request, res: Response) => {
     try {
         await User.findOne({ where: { id: userId } }).then((user: any) => {
             // Generate a new access token
-            const token = jwt.sign({ id: user.id, email: user.email, firstname: user.firstname, lastname: user.lastname }, JWT_SECRET, { expiresIn: '1h' }); // Token will expire in 1 hour
+            const token = jwt.sign({ id: user.id, email: user.email, phone: user.phone, firstname: user.firstname, lastname: user.lastname }, JWT_SECRET, { expiresIn: '1h' }); // Token will expire in 1 hour
 
             res.json({
                 message: "Token refreshed Successfully",
                 user: {
                     id: user.id,
                     email: user.email,
+                    phone: user.phone,
                     firstname: user.firstname,
                     lastname: user.lastname
                 },

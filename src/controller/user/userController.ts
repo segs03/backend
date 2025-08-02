@@ -6,7 +6,7 @@ import { User } from "../../models/user/users";
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.findAll({
-      attributes: ['id', 'email', 'firstname', 'lastname', 'created_at']
+      attributes: ['id', 'email', 'firstname', 'lastname', 'phone', 'created_at']
     });
 
     res.status(200).json({
@@ -36,6 +36,7 @@ export const getLoggedInUser = (req: Request, res: Response) => {
       user: {
         id: user.id,
         email: user.email,
+        phone: user.phone,
         firstname: user.firstname,
         lastname: user.lastname,
       }

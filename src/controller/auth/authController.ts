@@ -38,6 +38,7 @@ export const registerUser = async (req: Request, res: Response) => {
         const newUser = await User.create({
             firstname,
             lastname,
+            phone: '',
             email,
             password,
         });
@@ -89,7 +90,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
         // 3. Generate a JWT token for the user
         const token = jwt.sign(
-            { id: user.id, email: user.email, firstname: user.firstname, lastname: user.lastname },
+            { id: user.id, email: user.email, phone: user.phone, firstname: user.firstname, lastname: user.lastname },
             JWT_SECRET,
             { expiresIn: '1h' } // Token will expire in 1 hour
         );
@@ -102,6 +103,7 @@ export const loginUser = async (req: Request, res: Response) => {
             user: {
                 id: user.id,
                 email: user.email,
+                phone: user.phone,
                 firstname: user.firstname,
                 lastname: user.lastname,
             },

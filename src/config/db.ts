@@ -6,7 +6,7 @@ import { Sequelize } from 'sequelize';
 dotenv.config();
 
 
-const {SERVER, DATABASE, PASSWORD, USER } = config.MSSQL;
+const { SERVER, DATABASE, PASSWORD, USER } = config.MSSQL;
 export const sequelize = new Sequelize(DATABASE, USER, PASSWORD, {
     host: SERVER,
     dialect: "mssql",

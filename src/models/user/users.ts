@@ -10,7 +10,7 @@ export class User extends Model<InferAttributes<User>, InferCreationAttributes<U
     declare firstname: string;
     declare lastname: string;
     declare email: string;
-    // declare phone: CreationOptional<string>;
+    declare phone: CreationOptional<string>;
     declare password: string;
     declare createdAt: CreationOptional<Date>;
     declare updatedAt: CreationOptional<Date>;
@@ -41,11 +41,11 @@ User.init(
             allowNull: false,
         },
 
-        // phone: {
-        //     type: DataTypes.STRING(100),
-        //     unique: true,
-        //     allowNull: false,
-        // },
+        phone: {
+            type: DataTypes.STRING(20),
+            unique: true,
+            allowNull: false,
+        },
 
         password: {
             type: DataTypes.STRING(255),
